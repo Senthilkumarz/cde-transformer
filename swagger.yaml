@@ -1,0 +1,56 @@
+
+openapi: 3.0.3
+info:
+  title: CDE Transformer API
+  description: Aggregates file metadata from multiple CDE providers
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /v1/files:
+    get:
+      summary: Get aggregated files from specified CDEs
+      parameters:
+        - in: query
+          name: providers
+          schema:
+            type: string
+            example: bim360,procore
+          required: true
+          description: Comma-separated list of providers
+        - in: query
+          name: project
+          schema:
+            type: string
+            example: PRJ123
+          required: true
+          description: Project ID
+      responses:
+        '200':
+          description: List of aggregated files
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    source:
+                      type: string
+                      enum: [bim360, procore, viewpoint, trimble, accnoex]
+                    projectId:
+                      type: string
+                    fileId:
+                      type: string
+                    name:
+                      type: string
+                    version:
+                      type: string
+                    size:
+                      type: integer
+                    downloadUrl:
+                      type: string
+                    updatedAt:
+                      type: string
+                      format: date-time
+
