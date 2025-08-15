@@ -34,7 +34,7 @@ cde-transformer/
 4. Installation & Setup
 Local Development:
 1. Clone the repo
-   git clone https://github.com/YOUR_USERNAME/cde-transformer.git
+   git clone https://github.com/SenthilkumarZ/cde-transformer.git
    cd cde-transformer
 2. Install dependencies
    npm install
